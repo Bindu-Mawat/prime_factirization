@@ -1,0 +1,38 @@
+#Prime Factorization - Have the user enter a number and find all Prime Factors (if there are any) and display them.
+
+
+def find_prime_num(n):
+    '''This function checks if the given number is a prime number or not '''
+    for i in range(2,n):
+        if n%i==0:
+            return False
+    return True
+	
+def find_next_prime(num):
+    '''This function returns the next prime number after num'''
+    while True:
+        if True == find_prime_num(num+1):
+            return num+1
+        else:
+            num=num+1
+		
+def find_prime_fac(num):
+    '''This function return a list of prime factors of a number'''
+    l=[]
+    if True == find_prime_num(num):
+        l.append(num)
+        return l
+    temp_num=num
+    p_num=2
+    while temp_num > 1:
+        if(temp_num%p_num == 0):
+            l.append(p_num)
+            temp_num=temp_num/p_num
+            p_num = 2
+        else:
+            p_num = find_next_prime(p_num)
+    return set(l)
+	
+#calling: l=list(map(find_prime_fac,range(1,10))) or
+#l = find_prime_fac(10)
+	
